@@ -1,5 +1,5 @@
 PyBot Documentation
-********************
+===================
 
 PyBot is a chatbot that can be built on to create an AI. PyBot can learn
 from the user, so it demonstrates machine learning.
