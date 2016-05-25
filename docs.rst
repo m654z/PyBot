@@ -12,8 +12,8 @@ All you need is the pyBot.py file and a copy of Python 3.
 
 To create a new bot, you'll want to do the following:
 
-    import pyBot
-	
+::
+	import pyBot
 	myBot = pyBot.Bot() # Creates a bot named myBot.
 	while 1:
 		myBot.evaluate(input("Input > ")) # Evaluates the input and decides what to output.
