@@ -45,8 +45,3 @@ Exit exits the session.
 -----
 
 Data displays the bot's current database, as a Python dictionary. This command is useful for debugging.
-
-/HIST
------
-
-Hist displays the current session's history.
