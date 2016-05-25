@@ -21,7 +21,7 @@ class Bot:
     def say(self, text):
         print("BOT> " + text)
         self.current = text
-        self.session.append("BOT> " + text + "\n")
+        self.session = self.session + "BOT " + text + "\n")
 
     def evaluate(self, text):
         if text in self.database:
@@ -51,4 +51,4 @@ class Bot:
             print(self.session)
             self.say("...")
 
-        self.session.append("YOU> " + text + "\n")
+        self.session = self.session + "YOU> " + text + "\n")
