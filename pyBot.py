@@ -6,7 +6,6 @@ class Bot:
         self.lastOutput = lastOutput
         self.database = database
         self.saveFile = saveFile
-        self.session = session
 
     def save(self):
         f = open(self.saveFile, 'wb')
@@ -21,7 +20,6 @@ class Bot:
     def say(self, text):
         print("BOT> " + text)
         self.current = text
-        self.session = self.session + "BOT " + text + "\n"
 
     def evaluate(self, text):
         if text in self.database:
@@ -46,9 +44,3 @@ class Bot:
         if text == "/DATA":
             print(self.database)
             self.say("...")
-
-        if text == "/HIST":
-            print(self.session)
-            self.say("...")
-
-        self.session = self.session + "YOU> " + text + "\n"
