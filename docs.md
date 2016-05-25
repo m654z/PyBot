@@ -12,11 +12,12 @@ All you need is the pyBot.py file and a copy of Python 3.
 
 To create a new bot, you'll want to do the following:
 
-::
-	import pyBot
-	myBot = pyBot.Bot() # Creates a bot named myBot.
-	while 1:
-		myBot.evaluate(input("Input > ")) # Evaluates the input and decides what to output.
+``import pyBot``
+
+``myBot = pyBot.Bot() # Creates a bot named myBot.``
+
+``while 1:
+	myBot.evaluate(input("Input > ")) # Evaluates the input and decides what to output.``
 		
 It's as easy as that. You now have your very own chatbot!
 
