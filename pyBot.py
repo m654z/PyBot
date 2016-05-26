@@ -2,13 +2,15 @@ import random
 import pickle
 
 class Bot:
-    def __init__(self, current, data, saveFile):
-        self.current = current
+    current = ""
+    botText = "BOT> "
+    
+    def __init__(self, data, saveFile):
         self.data = data
         self.saveFile = saveFile
 
-    def say(self, text):
-        print("BOT> " + text)
+    def say(self, text, botText):
+        print(botText + text)
         self.current = text
 
     def addResponse(self, userInput, response):
@@ -21,7 +23,7 @@ class Bot:
 
     def evaluate(self, text):
         if text in self.data:
-            self.say(random.choice(self.data[text]))
+            self.say(random.choice(self.data[text]), self.botText)
 
         elif text == "/SAVE":
             f = open(self.saveFile, 'wb')
@@ -41,4 +43,4 @@ class Bot:
                 self.data[self.current] = []
 
             self.data[self.current].append(text)
-            self.say(text)
+            self.say(text, self.botText)
