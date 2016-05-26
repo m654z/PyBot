@@ -1,46 +1,44 @@
-import pickle
 import random
+import pickle
 
 class Bot:
-    def __init__(self, lastOutput, database, saveFile):
-        self.lastOutput = lastOutput
-        self.database = database
+    def __init__(self, current, data, saveFile):
+        self.current = current
+        self.data = data
         self.saveFile = saveFile
-
-    def save(self):
-        f = open(self.saveFile, 'wb')
-        pickle.dump(self.database, f)
-        f.close()
-
-    def load(self):
-        f = open(self.saveFile, 'wb')
-        self.database = pickle.load(f)
-        f.close()
 
     def say(self, text):
         print("BOT> " + text)
         self.current = text
 
+    def addResponse(self, userInput, response):
+        if userInput in self.data:
+            self.data[userInput].append(response)
+
+        else:
+            self.data[userInput] = []
+            self.data[userInput].append(response)
+
     def evaluate(self, text):
-        if text in self.database:
-            self.say(random.choice(self.database[text]))
+        if text in self.data:
+            self.say(random.choice(self.data[text]))
 
-        if text == "/QUIT":
-            print("If you quit, you will lose your current database! Are you sure?")
-            userInput = input("y/n> ")
-            if userInput.lower().startswith("n"):
-                exit
-            else:
-                bot.say("...")
+        elif text == "/SAVE":
+            f = open(self.saveFile, 'wb')
+            pickle.dump(self.data, f)
+            f.close()
 
-        if text == "/SAVE":
-            self.save()
-            self.say("...")
+        elif text == "/LOAD":
+            f = open(self.saveFile, 'rb')
+            self.data = pickle.load(f)
+            f.close()
 
-        if text == "/LOAD":
-            self.load()
-            self.say("Hi!")
+        elif text == "/DATA":
+            print(self.data)
 
-        if text == "/DATA":
-            print(self.database)
-            self.say("...")
+        else:
+            if not self.current in self.data:
+                self.data[self.current] = []
+
+            self.data[self.current].append(text)
+            self.say(text)
