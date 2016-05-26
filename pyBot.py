@@ -4,6 +4,7 @@ import pickle
 class Bot:
     current = ""
     botText = "BOT> "
+    preset = []
     
     def __init__(self, data, saveFile):
         self.data = data
@@ -43,4 +44,15 @@ class Bot:
                 self.data[self.current] = []
 
             self.data[self.current].append(text)
-            self.say(text, self.botText)
+            if self.preset == []:
+                self.say(text, self.botText)
+
+            else:
+                self.say(random.choice(self.preset), self.botText)
+
+class Utility:
+    def stripSpecial(self, string):
+        return string.decode("unicode_escape").encode("ascii", "ignore"))
+
+    def stripWhitespace(self, string):
+        return "".join(string.split())
