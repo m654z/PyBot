@@ -14,7 +14,7 @@ To create a new bot, you'll want to do the following:
 
 ``import pyBot``
 
-``myBot = pyBot.Bot() # Creates a bot named myBot.``
+``myBot = pyBot.Bot({}, 'botSave.bot') # Creates a bot named myBot.``
 
 ``while 1:
 	myBot.evaluate(input("Input > ")) # Evaluates the input and decides what to output.``
@@ -29,24 +29,14 @@ While chatting, you can use some commands to save or load the session, exit, and
 /SAVE
 -----
 
-Save saves the current session, and stores it by default in a file called botSave.pkl.
+Save saves the current session, and stores it in the specified save file.
 
 /LOAD
 -----
 
-Load loads a saved session from (by default) botSave.pkl
-
-/EXIT
------
-
-Exit exits the session.
+Load loads a saved session from the specified save file.
 
 /DATA
 -----
 
 Data displays the bot's current database, as a Python dictionary. This command is useful for debugging.
-
-/HIST
------
-
-Hist displays the current session's history.
