@@ -16,11 +16,11 @@ class Bot:
 
     def addResponse(self, userInput, response):
         if userInput in self.data:
-            self.data[userInput].append(response)
+            self.data[userInput].extend(response)
 
         else:
             self.data[userInput] = []
-            self.data[userInput].append(response)
+            self.data[userInput].extend(response)
 
     def evaluate(self, text):
         if text in self.data:
@@ -52,7 +52,7 @@ class Bot:
 
 class Utility:
     def stripSpecial(self, string):
-        return string.decode("unicode_escape").encode("ascii", "ignore"))
+        return string.decode("unicode_escape").encode("ascii", "ignore")
 
     def stripWhitespace(self, string):
         return "".join(string.split())
