@@ -4,14 +4,13 @@ import pickle
 class Bot:
     current = ""
     botText = "BOT> "
-    preset = []
     
     def __init__(self, data, saveFile):
         self.data = data
         self.saveFile = saveFile
 
-    def say(self, text, botText):
-        print(botText + text)
+    def say(self, text):
+        print(self.botText + text)
         self.current = text
 
     def addResponse(self, userInput, response):
@@ -22,9 +21,10 @@ class Bot:
             self.data[userInput] = []
             self.data[userInput].extend(response)
 
+
     def evaluate(self, text):
         if text in self.data:
-            self.say(random.choice(self.data[text]), self.botText)
+            self.say(random.choice(self.data[text]))
 
         elif text == "/SAVE":
             f = open(self.saveFile, 'wb')
@@ -44,11 +44,7 @@ class Bot:
                 self.data[self.current] = []
 
             self.data[self.current].append(text)
-            if self.preset == []:
-                self.say(text, self.botText)
-
-            else:
-                self.say(random.choice(self.preset), self.botText)
+            self.say(text)
 
 class Utility:
     def stripSpecial(self, string):
@@ -56,3 +52,12 @@ class Utility:
 
     def stripWhitespace(self, string):
         return "".join(string.split())
+
+class Variables:
+    things = ["TV", "computers", "music", "books", "sports"]
+    greetings = ["Hello!", "Hi!", "Hey!"]
+    farewells = ["Goodbye!", "Bye!", "See you later!"]
+    jokes = ["Can a kangaroo jump higher than a house? Of course, a house doesn't jump at all.",
+         "Why did the dinosaur cross the road? Because the chicken hasn't evolved yet.",
+         "I heard Apple is designing a new automatic car. But they're having trouble installing windows."
+    ]
