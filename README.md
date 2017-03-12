@@ -1,8 +1,8 @@
 # PyBot
 Create a chatbot in five minutes! No, I'm not even joking.
 
-## PyBot is a chatbot that can be built on to create an AI. PyBot can learn
-## from the user.
+PyBot is a chatbot that can be built on to create an AI. PyBot can learn
+from the user.
 
 Creating your own PyBot
 =======================
